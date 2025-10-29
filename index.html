@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ScriptXe</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="https://i.ibb.co/N224P2Zv/favicon-16x16.png" />
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T1M6M1HTJ8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-T1M6M1HTJ8');
+    </script>
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #1e1e1e;
+            color: white;
+            background-size: cover;
+            background-attachment: scroll;
+        }
+
+        header {
+            position: relative;
+            background: linear-gradient(90deg, #00C6FF, #7F00FF);
+            width: 100%;
+            font-family: 'Fredoka', sans-serif;
+            height: 245px;
+            color: white;
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+            overflow: hidden;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .text-wrapper {
+            position: relative;
+            z-index: 1;
+            padding-top: 60px;
+        }
+
+        .card {
+            max-width: 600px;
+            width: 80%;
+            margin-top: 35px !important;
+            margin: 40px auto;
+            background: #171717;
+            box-shadow: 0 0px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 16px;
+            padding: 24px;
+            color: #ffffff;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .card-child {
+            flex: 1;
+            min-width: 100px;
+            padding: 0px;
+            text-align: center;
+        }
+
+        .card-child img {
+            width: 40%;
+            height: 40%;
+            object-fit: cover;
+            margin-top: 5px;
+            margin-bottom: -5px;
+
+        }
+
+        .card-child h2 {
+            margin: 16px 0 8px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .card-child h4 {
+            text-align: center;
+            margin-bottom: -15px;
+            font-weight: bold;
+        }
+
+        .download-btn {
+            display: inline-block;
+            margin-top: 35px;
+            background: linear-gradient(90deg, #00C6FF, #7F00FF);
+            color: rgb(255, 255, 255);
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease;
+            animation: pulseScale 2s infinite ease-in-out;
+            cursor: pointer;
+        }
+
+        @keyframes pulseScale {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(0.9);
+            }
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+            margin: 20px 0;
+            padding: 10px 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+        }
+
+        .upper-text {
+            font-size: 40px;
+            font-weight: normal;
+            margin-bottom: -0px;
+            margin-top: -15px;
+            font-weight: bold;
+        }
+
+        .lower-text {
+            font-size: 14px;
+            margin-bottom: 20px;
+            margin-top: 0px;
+            font-weight: lighter;
+        }
+
+        .text-wrapper {
+            position: relative;
+            top: auto;
+            left: auto;
+            transform: none;
+            padding-top: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            width: 100%;
+            color: white;
+            pointer-events: auto;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            font-size: 22px;
+            color: #ffffff;
+            margin: 35px 16px;
+        }
+
+        .section-title::before {
+            content: "";
+            display: inline-block;
+            width: 6px;
+            height: 28px;
+            background: linear-gradient(90deg, #00C6FF, #7F00FF);
+            margin-right: 10px;
+            border-radius: 3px;
+        }
+
+        .img1 {
+            width: 80%;
+            height: 80%;
+        }
+
+        h4 {
+            text-align: center;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .popup-box {
+            background: #171717;
+            color: #ffffff;
+            max-width: 450px;
+            width: 80%;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.5s ease forwards;
+        }
+
+        .popup-box h2 {
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 2px;
+            margin-top: -5px;
+            text-align: left;
+        }
+
+        .popup-box h5 {
+            font-size: 15px;
+            font-weight: bold;
+            margin-bottom: 2px;
+            margin-top: -5px;
+            text-align: left;
+        }
+
+        .popup-box h6 {
+            font-size: 14px;
+            font-weight: lighter;
+            margin-bottom: 20px;
+            margin-top: 5px;
+            text-align: left;
+        }
+
+        .popup-box p {
+            font-size: 14px;
+            margin-bottom: 15px;
+            line-height: 1.5;
+            text-align: left;
+        }
+
+        .popup-box button {
+            background: linear-gradient(90deg, #00C6FF, #7F00FF);
+            color: #ffffff;
+            border: none;
+            padding: 14px 80px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .popup-box button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        @keyframes slideUp {
+            0% {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .download {
+            width: 18px !important;
+            height: auto !important;
+            position: relative;
+            right: 8px;
+            bottom: 2px;
+        }
+
+        #iframePopup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: flex-start;
+            z-index: 2000;
+            backdrop-filter: blur(3px);
+            padding-top: 20px;
+        }
+
+        #iframeBox {
+            background: transparent;
+            width: 90%;
+            max-width: 600px;
+            height: 80vh;
+            border-radius: 14px;
+            overflow: hidden;
+            transform: scale(0.8);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        #iframePopup.active #iframeBox {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        #lockerFrame {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+        <div class="text-wrapper">
+            <img class="logo" src="https://i.ibb.co/Dfc5KR2Q/8b50a9a49c4190dcb4c884b048143803.png" alt="logo">
+            <h3 class="upper-text">ScriptXe</h3>
+            <p class="lower-text">the ultimate site for roblox scripts. powered by scriptxe.</p>
+        </div>
+    </header>
+
+    <div class="section-title">99 NIGHTS SCRIPT</div>
+
+    <div class="card">
+        <div class="card-child">
+            <img src="https://i.ibb.co/0jWXsH2d/Site-community-image.webp" alt="grow-a-garden">
+            <h2>[🌲​] 99 Nights In The Forest Script.</h2>
+            <h4>- Ban Protection ✅</h4>
+            <h4>- Kill Enemies From Distance ⚔️​</h4>
+            <h4>- Bring Any Items 🍀</h4>
+            <h4>- Auto Shop All Trees ​🌳</h4>
+            <h4> - Teleport Anywhere In The Map ​🗺️</h4>
+            <h4>- FLY + SPEED ​🚀</h4>
+            <a href="https://applocked.org/cl/i/ex8wqd" class="download-btn">
+                <img src="https://i.ibb.co/JjnGSGMN/downloads-2.png" class="download" alt="downloads">
+                Download Script</a>
+        </div>
+    </div>
+
+    <div class="section-title">ABOUT THE SCRIPT</div>
+
+    <h4>✅​ VOID WARE SCRIPT</h4>
+    <img class="img1" src="https://i.ibb.co/5Hk8LWk/hq720.jpg" alt="script">
+    <h4>✅​ ANTI BAN PROTECTION</h4>
+    <img class="img1" src="https://i.ibb.co/21sQcYvY/maxresdefault.jpg" alt="ban">
+    <h4>✅​ BRING ANY TYPE OF FOOD</h4>
+    <img class="img1" src=" https://i.ibb.co/fzz8pDgC/photo-2025-10-16-14-36-18.jpg" alt="ban">
+    <h4>✅​ BRING FUEL AND LOGS</h4>
+    <img class="img1" src="https://i.ibb.co/TB2bZ3pS/photo-2025-10-16-14-36-23.jpg" alt="ban">
+
+    <footer class="footer">
+        &copy; 2025 scriptxe. All rights reserved.
+    </footer>
+
+    <div class="popup-overlay" id="popup">
+        <div class="popup-box">
+            <h2>Final Step Required</h2>
+            <p>To prevent abuse and ensure you are human, please complete a short verification step.</p>
+            <h5>How to Unlock Your Script:</h5>
+            <h6>Click the button below and complete ONE simple step. Once completed, your script unlocks automatically.
+            </h6>
+
+            <button id="verifyBtn">Start Verification</button>
+        </div>
+    </div>
+
+    <div id="iframePopup">
+        <div id="iframeBox">
+            <iframe id="lockerFrame" src="" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll(".download-btn").forEach(btn => {
+            btn.addEventListener("click", function (e) {
+                e.preventDefault();
+                document.getElementById("popup").style.display = "flex";
+                document.body.style.overflow = "hidden";
+            });
+        });
+
+        document.getElementById("verifyBtn").addEventListener("click", function () {
+            document.getElementById("popup").style.display = "none";
+
+            const iframePopup = document.getElementById("iframePopup");
+            const lockerFrame = document.getElementById("lockerFrame");
+            lockerFrame.src = "https://lockverify.org/cl/i/kld9n8";
+            iframePopup.style.display = "flex";
+            setTimeout(() => iframePopup.classList.add("active"), 10);
+        });
+    </script>
+
+    <div id="tiktok-fallback" style="
+      display: none;  
+      position: fixed;
+      top: 0; left: 0;  
+      width: 100vw; height: 100vh;
+      background: white;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+      box-sizing: border-box;">
+
+        <!-- GIF -->
+        <img src="https://www9.0zz0.com/2024/04/06/13/548511907.gif" alt="Instruction GIF"
+            style="max-width: 100%; height: auto; max-height: 70vh; margin-bottom: 15px;" />
+
+        <!-- Text below -->
+        <p style="font-family: sans-serif; font-size: 20px; color: #333; margin: 0;">
+            🚀​ For a better experience, please <b>Open in Browser</b>.
+        </p>
+    </div>
+
+    <script>
+        (function () {
+            const ua = navigator.userAgent.toLowerCase();
+            const ref = document.referrer.toLowerCase();
+            const fb = document.getElementById('tiktok-fallback');
+            if (!fb) return;
+
+            const tikTokIdentifiers = [
+                "tiktok",
+                "musical_ly",
+                "com.ss.android.ugc.trill",
+                "musicallygo"
+            ];
+
+            const isTikTokBrowser = tikTokIdentifiers.some(id => ua.includes(id)) || ref.includes("tiktok");
+
+            if (isTikTokBrowser) {
+                fb.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            } else {
+                fb.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        })();
+    </script>
+
+    <script>
+        if (!/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+            document.body.innerHTML = `
+    <div style="display:flex;justify-content:center;align-items:center;height:100vh;text-align:center;font-family:Arial,sans-serif;background:#f8f9fa;color:#333;padding:20px;">
+      <div>
+        <h1 style="font-size:2em;color:#1a73e8;">📱 Open on Your Phone</h1>
+        <p style="font-size:1.1em;margin:20px 0;">This page only works on mobile devices. Please open it on your phone to get the script.</p>
+        <a href="#" style="display:inline-block;background:#1a73e8;color:#fff;padding:12px 30px;border-radius:8px;text-decoration:none;font-weight:bold;">Open on Mobile</a>
+      </div>
+    </div>
+  `;
+        }
+    </script>
+
+</body>
+
+</html>
