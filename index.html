@@ -3,21 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>ScriptXe</title>
+    <title>ScriptXE</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
     <link rel="icon" type="image/png" sizes="16x16" href="https://i.ibb.co/N224P2Zv/favicon-16x16.png" />
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T1M6M1HTJ8"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-T1M6M1HTJ8');
-    </script>
+    <script type="text/javascript" id="ogjs" src="https://lockverify.org/cl/js/kr7wml"></script>
 
     <style>
         body {
@@ -292,44 +285,6 @@
             right: 8px;
             bottom: 2px;
         }
-
-        #iframePopup {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            justify-content: center;
-            align-items: flex-start;
-            z-index: 2000;
-            backdrop-filter: blur(3px);
-            padding-top: 20px;
-        }
-
-        #iframeBox {
-            background: transparent;
-            width: 90%;
-            max-width: 600px;
-            height: 80vh;
-            border-radius: 14px;
-            overflow: hidden;
-            transform: scale(0.8);
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-
-        #iframePopup.active #iframeBox {
-            transform: scale(1);
-            opacity: 1;
-        }
-
-        #lockerFrame {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
     </style>
 
 </head>
@@ -339,8 +294,8 @@
     <header>
         <div class="text-wrapper">
             <img class="logo" src="https://i.ibb.co/Dfc5KR2Q/8b50a9a49c4190dcb4c884b048143803.png" alt="logo">
-            <h3 class="upper-text">ScriptXe</h3>
-            <p class="lower-text">the ultimate site for roblox scripts. powered by scriptxe.</p>
+            <h3 class="upper-text">ScriptXE</h3>
+            <p class="lower-text">the ultimate site for roblox scripts. powered by ScriptXE.</p>
         </div>
     </header>
 
@@ -349,7 +304,7 @@
     <div class="card">
         <div class="card-child">
             <img src="https://i.ibb.co/0jWXsH2d/Site-community-image.webp" alt="grow-a-garden">
-            <h2>[🌲​] 99 Nights In The Forest Script.</h2>
+            <h2>[🌲] 99 Nights In The Forest Script.</h2>
             <h4>- Ban Protection ✅</h4>
             <h4>- Kill Enemies From Distance ⚔️​</h4>
             <h4>- Bring Any Items 🍀</h4>
@@ -374,7 +329,7 @@
     <img class="img1" src="https://i.ibb.co/TB2bZ3pS/photo-2025-10-16-14-36-23.jpg" alt="ban">
 
     <footer class="footer">
-        &copy; 2025 scriptxe. All rights reserved.
+        &copy; 2025 ScriptXE. All rights reserved.
     </footer>
 
     <div class="popup-overlay" id="popup">
@@ -389,12 +344,6 @@
         </div>
     </div>
 
-    <div id="iframePopup">
-        <div id="iframeBox">
-            <iframe id="lockerFrame" src="" frameborder="0" allowfullscreen></iframe>
-        </div>
-    </div>
-
     <script>
         document.querySelectorAll(".download-btn").forEach(btn => {
             btn.addEventListener("click", function (e) {
@@ -405,13 +354,9 @@
         });
 
         document.getElementById("verifyBtn").addEventListener("click", function () {
+            og_load();
             document.getElementById("popup").style.display = "none";
-
-            const iframePopup = document.getElementById("iframePopup");
-            const lockerFrame = document.getElementById("lockerFrame");
-            lockerFrame.src = "https://lockverify.org/cl/i/kld9n8";
-            iframePopup.style.display = "flex";
-            setTimeout(() => iframePopup.classList.add("active"), 10);
+            document.body.style.overflow = "auto";
         });
     </script>
 
