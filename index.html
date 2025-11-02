@@ -411,6 +411,27 @@
         })();
     </script>
 
-</body>
+    <script>
+if (!/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)) {
+  document.body.innerHTML = `
+  <div style="
+    background:#0f1724;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    height:100vh;
+    text-align:center;
+    font-family:sans-serif;
+    padding:20px;">
+    <div>
+      <h1>📱 Please open this site on your phone</h1>
+      <p>This site is only available on mobile devices.</p>
+    </div>
+  </div>`;
+  document.title = "Open on your phone";
+}
+</script>
 
+</body>
 </html>
