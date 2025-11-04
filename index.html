@@ -3,278 +3,219 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>ScriptXE</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>99 Nights In The Forest Script</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-
-    <link rel="icon" type="image/png" sizes="16x16" href="https://i.ibb.co/N224P2Zv/favicon-16x16.png" />
-
-    <script type="text/javascript" id="ogjs" src="https://lockedapp.org/cl/js/kr7wml"></script>
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            text-align: center;
-            background-color: #1b1e22;
-            color: white;
-            background-size: cover;
-            background-attachment: scroll;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background: #f9fafc;
+            color: #222;
         }
 
         header {
-            position: relative;
-            background: linear-gradient(90deg, #00C6FF, #7F00FF);
-            width: 100%;
-            font-family: 'Fredoka', sans-serif;
-            height: 245px;
-            color: white;
-            text-align: center;
-            font-size: 22px;
-            font-weight: bold;
-            overflow: hidden;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .text-wrapper {
-            position: relative;
-            z-index: 1;
-            padding-top: 60px;
-        }
-
-        .card {
-            max-width: 600px;
-            width: 80%;
-            margin-top: 35px !important;
-            margin: 40px auto;
-            background: #22262c;
-            box-shadow: 0 0px 8px rgba(0, 0, 0, 0.2);
-            border-radius: 16px;
-            padding: 24px;
-            color: #ffffff;
-            text-align: center;
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
-        }
-
-        .card-child {
-            flex: 1;
-            min-width: 100px;
-            padding: 0px;
-            text-align: center;
-        }
-
-        .card-child img {
-            width: 40%;
-            height: 40%;
-            object-fit: cover;
-            margin-top: 5px;
-            margin-bottom: -5px;
-
-        }
-
-        .card-child h2 {
-            margin: 16px 0 8px;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        .card-child h4 {
-            text-align: center;
-            margin-bottom: -15px;
-            font-weight: bold;
-        }
-
-        .download-btn {
-            display: inline-block;
-            margin-top: 35px;
-            background: linear-gradient(90deg, #00C6FF, #7F00FF);
-            color: rgb(255, 255, 255);
-            padding: 12px 24px;
-            font-size: 16px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background 0.3s ease;
-            animation: pulseScale 2s infinite ease-in-out;
-            cursor: pointer;
-        }
-
-        @keyframes pulseScale {
-
-            0%,
-            100% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(0.9);
-            }
-        }
-
-        .footer {
-            text-align: center;
-            font-size: 12px;
-            color: #888;
-            margin: 20px 0;
-            padding: 10px 0;
-            font-family: 'Poppins', sans-serif;
+            padding: 15px 20px;
+            background: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         .logo {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 20px;
-        }
-
-        .upper-text {
-            font-size: 40px;
-            font-weight: normal;
-            margin-bottom: -0px;
-            margin-top: -15px;
-            font-weight: bold;
-        }
-
-        .lower-text {
-            font-size: 14px;
-            margin-bottom: 20px;
-            margin-top: 0px;
-            font-weight: lighter;
-        }
-
-        .text-wrapper {
-            position: relative;
-            top: auto;
-            left: auto;
-            transform: none;
-            padding-top: 30px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-            width: 100%;
-            color: white;
-            pointer-events: auto;
-        }
-
-        .section-title {
             display: flex;
             align-items: center;
-            font-family: Arial, sans-serif;
-            font-weight: bold;
-            font-size: 22px;
-            color: #ffffff;
-            margin: 35px 16px;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #000;
         }
 
-        .section-title::before {
-            content: "";
-            display: inline-block;
-            width: 6px;
-            height: 28px;
-            background: linear-gradient(90deg, #00C6FF, #7F00FF);
-            margin-right: 10px;
-            border-radius: 3px;
+        .logo span {
+            color: #00b2ff;
+            font-weight: 600;
         }
 
-        .img1 {
-            width: 80%;
-            height: 80%;
-        }
-
-        h4 {
-            text-align: center;
-            font-weight: bold;
-            margin-left: 10px;
-        }
-
-        .popup-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.75);
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-        }
-
-        .popup-box {
-            background: #22262c;
-            color: #ffffff;
-            max-width: 450px;
-            width: 80%;
-            padding: 25px;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-            animation: slideUp 0.5s ease forwards;
-        }
-
-        .popup-box h2 {
-            font-size: 26px;
-            font-weight: bold;
-            margin-bottom: 2px;
-            margin-top: -5px;
-            text-align: left;
-        }
-
-        .popup-box h5 {
-            font-size: 15px;
-            font-weight: bold;
-            margin-bottom: 2px;
-            margin-top: -5px;
-            text-align: left;
-        }
-
-        .popup-box h6 {
-            font-size: 14px;
-            font-weight: lighter;
-            margin-bottom: 20px;
-            margin-top: 5px;
-            text-align: left;
-        }
-
-        .popup-box p {
-            font-size: 14px;
-            margin-bottom: 15px;
-            line-height: 1.5;
-            text-align: left;
-        }
-
-        .popup-box button {
-            background: linear-gradient(90deg, #00C6FF, #7F00FF);
-            color: #ffffff;
-            border: none;
-            padding: 14px 80px;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 8px;
+        .menu-icon {
+            font-size: 24px;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
+            display: none;
         }
 
-        .popup-box button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        .search-bar input {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            outline: none;
+            width: 200px;
+            transition: 0.3s;
         }
 
-        @keyframes slideUp {
-            0% {
-                transform: translateY(100px);
-                opacity: 0;
+        .search-bar input:focus {
+            border-color: #00b2ff;
+            width: 240px;
+        }
+
+        nav {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: block;
             }
 
-            100% {
-                transform: translateY(0);
-                opacity: 1;
+            .search-bar input {
+                width: 140px;
             }
+
+            nav {
+                display: none;
+                flex-direction: column;
+                background: #fff;
+                position: absolute;
+                top: 60px;
+                right: 15px;
+                border-radius: 10px;
+                box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            nav a {
+                padding: 12px 15px;
+                border-bottom: 1px solid #eee;
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            color: #00b2ff;
+        }
+
+        .breadcrumb {
+            font-size: 0.9rem;
+            color: #777;
+            margin: 15px 20px;
+        }
+
+        .breadcrumb a {
+            text-decoration: none;
+            color: #777;
+        }
+
+        .breadcrumb a:hover {
+            color: #00b2ff;
+        }
+
+        .breadcrumb span {
+            color: #555;
+        }
+
+        .game-card {
+            background: #fff;
+            margin: 20px 10px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .banner {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .game-info-box {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .game-info-box img {
+            width: 90px;
+            height: 90px;
+            border-radius: 10px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .game-info {
+            flex: 1;
+        }
+
+        .game-info h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 5px;
+        }
+
+        .game-info p {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            margin-top: 5px;
+            font-size: 0.9rem;
+            color: #444;
+        }
+
+        .stars {
+            color: orange;
+            margin-right: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #fff;
+            color: #777;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+            margin-top: 40px;
+        }
+
+        .download-btn {
+            margin-top: 15px;
+            background: linear-gradient(180deg, #F5AD1E 17.71%, #F27621 86.46%);
+            color: #ffffff;
+            padding: 12px 24px;
+            font-size: 14px;
+            margin-left: 90px;
+            margin-right: 90px;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
         }
 
         .download {
@@ -282,103 +223,273 @@
             height: auto !important;
             position: relative;
             right: 8px;
-            bottom: 2px;
+        }
+
+        .text {
+            margin-top: 15px;
+            font-weight: lighter;
+            font-size: 14px;
+            margin-left: 10px;
+            text-align: left;
+        }
+
+        .title {
+            margin-top: 15px;
+            font-size: 20px;
+            margin-left: 10px;
+            text-align: left;
+        }
+
+        /* Overlay */
+        #popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            font-family: Poppins, sans-serif;
+        }
+
+        /* Popup matches your game-card design */
+        .popup-box {
+            background: #fff;
+            color: #222;
+            width: 340px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            padding: 25px 30px;
+        }
+
+        .progress-container {
+            background: #e6e6e6;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 10px;
+            margin: 15px 0;
+        }
+
+        .progress-bar {
+            height: 10px;
+            width: 0%;
+            background: linear-gradient(90deg, #F5AD1E 17.71%, #F27621 86.46%);
+            transition: width 0.3s;
+        }
+
+        .verify-text {
+            font-size: 14px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        #verify-btn {
+            background: linear-gradient(180deg, #F5AD1E 17.71%, #F27621 86.46%);
+            color: #ffffff;
+            padding: 12px 24px;
+            font-size: 14px;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            width: fit-content;
+            margin: 0 auto;
+        }
+
+        #verify-btn:hover {
+            opacity: 0.9;
         }
     </style>
-
 </head>
 
 <body>
 
     <header>
-        <div class="text-wrapper">
-            <img class="logo" src="https://i.ibb.co/Dfc5KR2Q/8b50a9a49c4190dcb4c884b048143803.png" alt="logo">
-            <h3 class="upper-text">ScriptXE</h3>
-            <p class="lower-text">the ultimate site for roblox scripts. powered by ScriptXE.</p>
+        <div class="logo"><span>Script</span>XE</div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search Scripts...">
         </div>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <nav id="menu">
+            <a href="#">Home</a>
+            <a href="#">Games</a>
+            <a href="#">Mods</a>
+            <a href="#">Contact</a>
+        </nav>
     </header>
 
-    <div class="section-title">99 NIGHTS SCRIPT</div>
+    <div class="breadcrumb">
+        <a href="#">Home</a> &gt;
+        <a href="#">Games</a> &gt;
+        <a href="#">Scripts</a> &gt;
+        <span>99 Nights in the forest</span>
+    </div>
 
-    <div class="card">
-        <div class="card-child">
-            <img src="https://i.ibb.co/0jWXsH2d/Site-community-image.webp" alt="grow-a-garden">
-            <h2>[🌲] 99 Nights In The Forest Script.</h2>
-            <h4>- Ban Protection ✅</h4>
-            <h4>- Kill Enemies From Distance ⚔️​</h4>
-            <h4>- Bring Any Items 🍀</h4>
-            <h4>- Auto Shop All Trees ​🌳</h4>
-            <h4> - Teleport Anywhere In The Map ​🗺️</h4>
-            <h4>- FLY + SPEED ​🚀</h4>
-            <a href="https://applocked.org/cl/i/ex8wqd" class="download-btn">
-                <img src="https://i.ibb.co/JjnGSGMN/downloads-2.png" class="download" alt="downloads">
-                Download Script</a>
+    <div class="game-card">
+        <img class="banner" src="https://i.ibb.co/TMCp2Y0k/99-nights-in-the-forest-codes-160b1e8.webp" alt="banner">
+        <div class="game-info-box">
+            <img src="https://i.ibb.co/LdhS9cDt/99-nights-in-the-forest-codes.webp" alt="icon">
+            <div class="game-info">
+                <h3>99 Nights in The Forest Script</h1>
+                    <p>Updated at Oct 16, 2025</p>
+                    <div class="rating">
+                        <span class="stars">★★★★☆</span> 4/5
+                    </div>
+            </div>
         </div>
     </div>
 
-    <div class="section-title">ABOUT THE SCRIPT</div>
+    <a href="#" class="download-btn">
+        <img src="https://i.ibb.co/JjnGSGMN/downloads-2.png" class="download" alt="downloads">
+        Download Script</a>
 
-    <h4>✅​ VOID WARE SCRIPT</h4>
-    <img class="img1" src="https://i.ibb.co/5Hk8LWk/hq720.jpg" alt="script">
-    <h4>✅​ ANTI BAN PROTECTION</h4>
-    <img class="img1" src="https://i.ibb.co/21sQcYvY/maxresdefault.jpg" alt="ban">
-    <h4>✅​ BRING ANY TYPE OF FOOD</h4>
-    <img class="img1" src=" https://i.ibb.co/fzz8pDgC/photo-2025-10-16-14-36-18.jpg" alt="ban">
-    <h4>✅​ BRING FUEL AND LOGS</h4>
-    <img class="img1" src="https://i.ibb.co/TB2bZ3pS/photo-2025-10-16-14-36-23.jpg" alt="ban">
+    <p class="text">Get the 99 Nights In The Forest Script (2025) for Roblox. Unlock auto-farm, ESP, walk speed, no key
+        system, and more — fully keyless and Pastebin supported.</p>
 
-    <footer class="footer">
-        &copy; 2025 ScriptXE. All rights reserved.
+    <h3 class="title">99 Nights In The Forest Script: Keyless & Powerful Features</h3>
+
+    <p class="text">In the Roblox game “99 Nights In The Forest,” surviving each night becomes harder as monsters grow
+        stronger and resources become limited. With the latest 99 Nights In The Forest Script, players can automate
+        tasks, survive longer, and explore hidden areas easily. This keyless version allows instant execution without
+        verification, saving players time and effort.</p>
+
+    <p class="text">This article covers everything you need to know about the 99 Nights In The Forest Script — from
+        features, safe usage, and supported executors, to where to get the working Pastebin link. Whether you're new to
+        scripting or already familiar with Roblox executors like Fluxus or Arceus X, this guide will help you maximize
+        your experience.</p>
+
+    <h3 class="title">What is 99 Nights In The Forest Script?</h3>
+
+    <p class="text">The 99 Nights In The Forest Script is a Lua-based Roblox exploit script designed to give players
+        advanced abilities and automation inside the survival horror game. It can be executed using popular Roblox
+        script executors such as Delta, Hydrogen, or Arceus X. Players can use it to collect materials, fight enemies,
+        and explore faster without manual grinding.</p>
+
+    <p class="text">Unlike key-locked scripts that require verification, this version is completely keyless — meaning
+        you can paste and run instantly. It’s created to simplify gameplay while keeping your progress safe and
+        undetected when used responsibly.</p>
+
+    <h3 class="title">Core Features of 99 Nights In The Forest Script</h3>
+
+    <p class="text">The script includes several powerful functions that enhance gameplay. Auto-farm automatically
+        collects materials and resources while you focus on survival. ESP (Extra Sensory Perception) lets you see items,
+        players, and enemies through walls. Walk speed and jump power modifiers give you complete control over movement
+        and escape routes.</p>
+
+    <p class="text">Other features include infinite stamina, night vision, and no cooldown for weapons. These tools make
+        survival easier while keeping the fun and challenge of the game intact. You can enable or disable each function
+        using a clean and responsive GUI built directly into the script.</p>
+
+    <p class="text">The script is regularly updated to remain compatible with the latest Roblox patches. Always make
+        sure to use trusted sources or the official Pastebin link provided below to avoid fake versions or unsafe files.
+    </p>
+
+    <a href="#" class="download-btn">
+        <img src="https://i.ibb.co/JjnGSGMN/downloads-2.png" class="download" alt="downloads">
+        Download</a>
+
+    <footer>
+        © 2025 ScriptXE. All rights reserved.
     </footer>
 
-    <div class="popup-overlay" id="popup">
+    <div id="popup-overlay">
         <div class="popup-box">
-            <h2>Final Step Required</h2>
-            <p>To prevent abuse and ensure you are human, please complete a short verification step.</p>
-            <h5>How to Unlock Your Script:</h5>
-            <h6>Click the button below and complete ONE simple step. Once completed, your script unlocks automatically.
-            </h6>
+            <h3 id="popup-title">Preparing your script...</h3>
 
-            <button id="verifyBtn">Start Verification</button>
+            <div class="progress-container" id="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+
+            <p id="progress-text">0%</p>
+
+            <div id="verify-section" style="display:none;">
+                <p class="verify-text">
+                    Due to high traffic and to ensure you are not a robot, please complete the verification below to
+                    download your script.
+                </p>
+                <a id="verify-btn" href="https://lockedapp.org/cl/i/kr7wml">Start Verification</a>
+            </div>
         </div>
     </div>
 
     <script>
-        document.querySelectorAll(".download-btn").forEach(btn => {
-            btn.addEventListener("click", function (e) {
-                e.preventDefault();
-                document.getElementById("popup").style.display = "flex";
-                document.body.style.overflow = "hidden";
-            });
+
+        const downloadBtn = document.querySelector('.download-btn');
+        const popup = document.getElementById('popup-overlay');
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+        const popupTitle = document.getElementById('popup-title');
+        const verifySection = document.getElementById('verify-section');
+        const progressContainer = document.getElementById('progress-container');
+
+        downloadBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            popup.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            startLoading();
         });
 
-        document.getElementById("verifyBtn").addEventListener("click", function () {
-            og_load();
-            document.getElementById("popup").style.display = "none";
-            document.body.style.overflow = "auto";
-        });
+        function startLoading() {
+            const steps = [0, 22, 51, 77, 99];
+            let i = 0;
+
+            progressBar.style.width = steps[i] + "%";
+            progressText.textContent = steps[i] + "%";
+            i++;
+
+            const interval = setInterval(() => {
+                progressBar.style.width = steps[i] + "%";
+                progressText.textContent = steps[i] + "%";
+
+                if (i === steps.length - 1) {
+                    clearInterval(interval);
+
+                    setTimeout(() => {
+                        progressContainer.style.display = "none";
+                        progressText.style.display = "none";
+                        popupTitle.textContent = "Human verification required";
+                        verifySection.style.display = "block";
+                    }, 2000);
+                }
+                i++;
+            }, 2000);
+        }
+
+    </script>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('menu').classList.toggle('active');
+        }
     </script>
 
     <div id="tiktok-fallback" style="
-      display: none;  
-      position: fixed;
-      top: 0; left: 0;  
-      width: 100vw; height: 100vh;
-      background: white;
-      z-index: 9999;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 20px;
-      box-sizing: border-box;">
+                display: none;  
+                position: fixed;
+                top: 0; left: 0;  
+                width: 100vw; height: 100vh;
+                background: white;
+                z-index: 9999;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                padding: 20px;
+                box-sizing: border-box;">
 
-        <!-- GIF -->
         <img src="https://www9.0zz0.com/2024/04/06/13/548511907.gif" alt="Instruction GIF"
             style="max-width: 100%; height: auto; max-height: 70vh; margin-bottom: 15px;" />
 
-        <!-- Text below -->
         <p style="font-family: sans-serif; font-size: 20px; color: #333; margin: 0;">
             🚀​ For a better experience, please <b>Open in Browser</b>.
         </p>
@@ -413,21 +524,21 @@
     <script>
         if (!/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)) {
             document.body.innerHTML = `
-  <div style="
-    background:#0f1724;
-    color:#fff;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    height:100vh;
-    text-align:center;
-    font-family:sans-serif;
-    padding:20px;">
-    <div>
-      <h1>📱 Please open this site on your phone</h1>
-      <p>This site is only available on mobile devices.</p>
-    </div>
-  </div>`;
+                <div style="
+                    background:#0f1724;
+                    color:#fff;
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    height:100vh;
+                    text-align:center;
+                    font-family:sans-serif;
+                    padding:20px;">
+                    <div>
+                    <h1>📱 Please open this site on your phone</h1>
+                    <p>This site is only available on mobile devices.</p>
+                    </div>
+                </div>`;
             document.title = "Open on your phone";
         }
     </script>
