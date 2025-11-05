@@ -118,6 +118,7 @@
             font-size: 0.9rem;
             color: #777;
             margin: 15px 20px;
+            text-align: left;
         }
 
         .breadcrumb a {
@@ -167,16 +168,15 @@
             flex: 1;
         }
 
-        .game-info h1 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #000;
-            margin-bottom: 5px;
-        }
-
         .game-info p {
             font-size: 0.95rem;
             color: #666;
+            text-align: left;
+        }
+
+        .game-info h3 {
+            font-size: 17px;
+            text-align: left;
         }
 
         .rating {
@@ -185,11 +185,13 @@
             margin-top: 5px;
             font-size: 0.9rem;
             color: #444;
+            text-align: left;
         }
 
         .stars {
             color: orange;
             margin-right: 5px;
+            text-align: left;
         }
 
         footer {
@@ -206,20 +208,43 @@
             display: inline-block;
             background: linear-gradient(180deg, #F5AD1E 17.71%, #F27621 86.46%);
             color: #ffffff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
             padding: 12px 24px;
             font-size: 14px;
             font-weight: bold;
             border-radius: 16px;
             text-decoration: none;
             white-space: nowrap;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            animation: pulse 2s infinite;
+            box-shadow: 0 0 10px rgba(242, 118, 33, 0.6);
+            -webkit-tap-highlight-color: transparent;
         }
 
+        .download-btn:active {
+            transform: translateY(-3px);
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.08);
+            }
+        }
 
         .download {
             width: 18px !important;
             height: auto !important;
-            position: relative;
-            right: 8px;
+            position: relative;     
+            right: 5px;     
         }
 
         .text {
@@ -235,6 +260,22 @@
             font-size: 20px;
             margin-left: 10px;
             text-align: left;
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            60% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
 
         #popup-overlay {
@@ -259,6 +300,7 @@
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
             text-align: center;
             padding: 25px 30px;
+            animation: popIn 0.5s ease;
         }
 
         .progress-container {
@@ -298,6 +340,9 @@
             justify-content: center;
             width: fit-content;
             margin: 0 auto;
+            animation: pulse 2s infinite;
+            box-shadow: 0 0 10px rgba(242, 118, 33, 0.6);
+            -webkit-tap-highlight-color: transparent;
         }
 
         #verify-btn:hover {
@@ -335,9 +380,9 @@
             <img src="https://i.ibb.co/LdhS9cDt/99-nights-in-the-forest-codes.webp" alt="icon">
             <div class="game-info">
                 <h3>99 Nights in The Forest Script</h1>
-                    <p>Updated at Oct 16, 2025</p>
+                    <p>Updated at Oct 31, 2025</p>
                     <div class="rating">
-                        <span class="stars">★★★★☆</span> 4/5
+                        <span class="stars">★★★★☆</span> 4.89/5
                     </div>
             </div>
         </div>
