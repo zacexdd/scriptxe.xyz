@@ -243,8 +243,8 @@
         .download {
             width: 18px !important;
             height: auto !important;
-            position: relative;     
-            right: 5px;     
+            position: relative;
+            right: 5px;
         }
 
         .text {
@@ -307,15 +307,27 @@
             background: #e6e6e6;
             border-radius: 10px;
             overflow: hidden;
-            height: 10px;
+            height: 22px;
             margin: 15px 0;
         }
 
         .progress-bar {
-            height: 10px;
+            position: relative;
+            height: 22px;
             width: 0%;
             background: linear-gradient(90deg, #F5AD1E 17.71%, #F27621 86.46%);
             transition: width 0.3s;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 6px;
+        }
+
+        #progress-text {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
         }
 
         .verify-text {
@@ -324,6 +336,15 @@
             margin-bottom: 15px;
             color: #333;
             line-height: 1.5;
+        }
+
+        .urgent-text {
+            font-size: 16px;
+            margin-top: 15px;
+            color: #6c757d;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 20px;
         }
 
         #verify-btn {
@@ -347,6 +368,13 @@
 
         #verify-btn:hover {
             opacity: 0.9;
+        }
+
+        .vedio {
+            width: 340px;
+            height: auto;
+            border-radius: 5px;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -391,6 +419,11 @@
     <a href="#" class="download-btn">
         <img src="https://i.ibb.co/JjnGSGMN/downloads-2.png" class="download" alt="downloads">
         Download Script</a>
+
+    <h3 class="title">How To Download?</h3>
+
+    <iframe class="vedio" src="https://www.youtube.com/embed/Bn_NNKXGNc0?si=2FzCykpVUJOtRExI" frameborder="0"
+        allowfullscreen></iframe>
 
     <p class="text">Get the 99 Nights In The Forest Script (2025) for Roblox. Unlock auto-farm, ESP, walk speed, no key
         system, and more — fully keyless and Pastebin supported.</p>
@@ -442,73 +475,68 @@
             <h3 id="popup-title">Preparing your script...</h3>
 
             <div class="progress-container" id="progress-container">
-                <div class="progress-bar" id="progress-bar"></div>
+                <div class="progress-bar" id="progress-bar">
+                    <span id="progress-text">0%</span>
+                </div>
             </div>
-
-            <p id="progress-text">0%</p>
 
             <div id="verify-section" style="display:none;">
-                <p class="verify-text">
-                    Due to high traffic and to ensure you are not a robot, please complete the verification below to
-                    download your script.
+                <p class="verify-text urgent-text">
+                    <span style="color: red;" <strong>URGENT:</strong></span> Human verification required to finish
+                    downloading your script!
                 </p>
-                <a id="verify-btn" href="https://lockedapp.org/cl/i/kr7wml">Start Verification</a>
+                <a id="verify-btn" href="https://lockedapp.org/cl/i/kr7wml">Verify & Download</a>
             </div>
-        </div>
-    </div>
 
-    <script>
+            <script>
+                const downloadBtn = document.querySelector('.download-btn');
+                const popup = document.getElementById('popup-overlay');
+                const progressBar = document.getElementById('progress-bar');
+                const progressText = document.getElementById('progress-text');
+                const popupTitle = document.getElementById('popup-title');
+                const verifySection = document.getElementById('verify-section');
+                const progressContainer = document.getElementById('progress-container');
 
-        const downloadBtn = document.querySelector('.download-btn');
-        const popup = document.getElementById('popup-overlay');
-        const progressBar = document.getElementById('progress-bar');
-        const progressText = document.getElementById('progress-text');
-        const popupTitle = document.getElementById('popup-title');
-        const verifySection = document.getElementById('verify-section');
-        const progressContainer = document.getElementById('progress-container');
+                downloadBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    popup.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                    startLoading();
+                });
 
-        downloadBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            popup.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-            startLoading();
-        });
+                function startLoading() {
+                    const steps = [0, 22, 51, 77, 95];
+                    let i = 0;
 
-        function startLoading() {
-            const steps = [0, 22, 51, 77, 99];
-            let i = 0;
+                    progressBar.style.width = steps[i] + "%";
+                    progressText.textContent = steps[i] + "%";
+                    i++;
 
-            progressBar.style.width = steps[i] + "%";
-            progressText.textContent = steps[i] + "%";
-            i++;
+                    const interval = setInterval(() => {
+                        progressBar.style.width = steps[i] + "%";
+                        progressText.textContent = steps[i] + "%";
 
-            const interval = setInterval(() => {
-                progressBar.style.width = steps[i] + "%";
-                progressText.textContent = steps[i] + "%";
+                        if (i === steps.length - 1) {
+                            clearInterval(interval);
 
-                if (i === steps.length - 1) {
-                    clearInterval(interval);
-
-                    setTimeout(() => {
-                        progressContainer.style.display = "none";
-                        progressText.style.display = "none";
-                        popupTitle.textContent = "Human verification required";
-                        verifySection.style.display = "block";
+                            setTimeout(() => {
+                                popupTitle.textContent = "Almost Complete... 95%";
+                                progressText.textContent = "95%";
+                                verifySection.style.display = "block";
+                            }, 2000);
+                        }
+                        i++;
                     }, 2000);
                 }
-                i++;
-            }, 2000);
-        }
+            </script>
 
-    </script>
+            <script>
+                function toggleMenu() {
+                    document.getElementById('menu').classList.toggle('active');
+                }
+            </script>
 
-    <script>
-        function toggleMenu() {
-            document.getElementById('menu').classList.toggle('active');
-        }
-    </script>
-
-    <div id="tiktok-fallback" style="
+            <div id="tiktok-fallback" style="
                 display: none;  
                 position: fixed;
                 top: 0; left: 0;  
@@ -523,43 +551,43 @@
                 padding: 20px;
                 box-sizing: border-box;">
 
-        <img src="https://www9.0zz0.com/2024/04/06/13/548511907.gif" alt="Instruction GIF"
-            style="max-width: 100%; height: auto; max-height: 70vh; margin-bottom: 15px;" />
+                <img src="https://www9.0zz0.com/2024/04/06/13/548511907.gif" alt="Instruction GIF"
+                    style="max-width: 100%; height: auto; max-height: 70vh; margin-bottom: 15px;" />
 
-        <p style="font-family: sans-serif; font-size: 20px; color: #333; margin: 0;">
-            🚀​ For a better experience, please <b>Open in Browser</b>.
-        </p>
-    </div>
+                <p style="font-family: sans-serif; font-size: 20px; color: #333; margin: 0;">
+                    🚀​ For a better experience, please <b>Open in Browser</b>.
+                </p>
+            </div>
 
-    <script>
-        (function () {
-            const ua = navigator.userAgent.toLowerCase();
-            const ref = document.referrer.toLowerCase();
-            const fb = document.getElementById('tiktok-fallback');
-            if (!fb) return;
+            <script>
+                (function () {
+                    const ua = navigator.userAgent.toLowerCase();
+                    const ref = document.referrer.toLowerCase();
+                    const fb = document.getElementById('tiktok-fallback');
+                    if (!fb) return;
 
-            const tikTokIdentifiers = [
-                "tiktok",
-                "musical_ly",
-                "com.ss.android.ugc.trill",
-                "musicallygo"
-            ];
+                    const tikTokIdentifiers = [
+                        "tiktok",
+                        "musical_ly",
+                        "com.ss.android.ugc.trill",
+                        "musicallygo"
+                    ];
 
-            const isTikTokBrowser = tikTokIdentifiers.some(id => ua.includes(id)) || ref.includes("tiktok");
+                    const isTikTokBrowser = tikTokIdentifiers.some(id => ua.includes(id)) || ref.includes("tiktok");
 
-            if (isTikTokBrowser) {
-                fb.style.display = 'flex';
-                document.body.style.overflow = 'hidden';
-            } else {
-                fb.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        })();
-    </script>
+                    if (isTikTokBrowser) {
+                        fb.style.display = 'flex';
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        fb.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                })();
+            </script>
 
-    <script>
-        if (!/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)) {
-            document.body.innerHTML = `
+            <script>
+                if (!/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)) {
+                    document.body.innerHTML = `
                 <div style="
                     background:#0f1724;
                     color:#fff;
@@ -575,9 +603,9 @@
                     <p>This site is only available on mobile devices.</p>
                     </div>
                 </div>`;
-            document.title = "Open on your phone";
-        }
-    </script>
+                    document.title = "Open on your phone";
+                }
+            </script>
 
 </body>
 
