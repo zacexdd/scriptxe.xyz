@@ -1,604 +1,1071 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>99 Nights In The Forest Script</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <title>ScriptXE - Script Roblox</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "Poppins", sans-serif;
+        }
+
+        :root {
+            --primary: #8b5cf6;
+            --primary-light: #a78bfa;
+            --primary-dark: #7c3aed;
+            --accent: #ec4899;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --info: #3b82f6;
+            --bg: #0f0f1e;
+            --card: #1a1a2e;
+            --text: #ffffff;
+            --text-light: #94a3b8;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        body.light-mode {
+            --bg: #fafafa;
+            --card: #ffffff;
+            --text: #1f2937;
+            --text-light: #6b7280;
+            --border: #e5e7eb;
         }
 
         body {
-            background: #f9fafc;
-            color: #222;
-            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            transition: background 0.3s ease, color 0.3s ease;
         }
 
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
         header {
+            background: var(--card);
+            padding: 16px 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+            transition: background 0.3s ease;
+        }
+
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 20px;
-            background: #fff;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
         }
 
         .logo {
+            font-size: 26px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             display: flex;
             align-items: center;
-            font-weight: 700;
-            font-size: 1.3rem;
-            color: #000;
+            gap: 8px;
         }
 
-        .logo span {
-            color: #00b2ff;
-            font-weight: 600;
+        .logo i {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .menu-icon {
-            font-size: 24px;
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .theme-toggle {
+            width: 48px;
+            height: 48px;
+            background: rgba(139, 92, 246, 0.1);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--primary);
+            font-size: 20px;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(139, 92, 246, 0.2);
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        .header-badges {
             display: none;
         }
 
-        .search-bar input {
-            padding: 8px 12px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            outline: none;
-            width: 200px;
-            transition: 0.3s;
-        }
-
-        .search-bar input:focus {
-            border-color: #00b2ff;
-            width: 240px;
-        }
-
-        nav {
+        .badge-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
             display: flex;
-            gap: 15px;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            transition: all 0.3s;
+            cursor: pointer;
         }
 
-        @media (max-width: 768px) {
-            .menu-icon {
-                display: block;
-            }
-
-            .search-bar input {
-                width: 140px;
-            }
-
-            nav {
-                display: none;
-                flex-direction: column;
-                background: #fff;
-                position: absolute;
-                top: 60px;
-                right: 15px;
-                border-radius: 10px;
-                box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-            }
-
-            nav.active {
-                display: flex;
-            }
-
-            nav a {
-                padding: 12px 15px;
-                border-bottom: 1px solid #eee;
-                width: 100%;
-                text-align: center;
-            }
+        .badge-icon:hover {
+            transform: translateY(-2px);
         }
 
-        nav a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: 0.2s;
+        .badge-downloads {
+            background: linear-gradient(135deg, #ddd6fe, #e9d5ff);
+            color: var(--primary);
         }
 
-        nav a:hover {
-            color: #00b2ff;
+        .badge-rating {
+            background: linear-gradient(135deg, #fce7f3, #fbcfe8);
+            color: var(--accent);
         }
 
-        .breadcrumb {
-            font-size: 0.9rem;
-            color: #777;
-            margin: 15px 20px;
-            text-align: left;
+        .badge-users {
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            color: var(--info);
         }
 
-        .breadcrumb a {
-            text-decoration: none;
-            color: #777;
+        .badge-verified {
+            background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+            color: var(--success);
         }
 
-        .breadcrumb a:hover {
-            color: #00b2ff;
+        .badge-icon-value {
+            font-size: 16px;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 2px;
         }
 
-        .breadcrumb span {
-            color: #555;
+        .badge-icon-label {
+            font-size: 9px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            opacity: 0.8;
         }
 
-        .game-card {
-            background: #fff;
-            margin: 20px 10px;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        /* Main */
+        main {
+            padding: 40px 0 80px;
+        }
+
+        .scripts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+            gap: 24px;
+            max-width: 100%;
+        }
+
+        .script-card {
+            background: var(--card);
+            border-radius: 20px;
             overflow: hidden;
+            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.08);
+            border: 1px solid var(--border);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
         }
 
-        .banner {
+        .script-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.15);
+            border-color: var(--primary-light);
+        }
+
+        .card-image-wrapper {
+            position: relative;
             width: 100%;
-            height: 220px;
-            object-fit: cover;
-            display: block;
+            height: 200px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f3e8ff, #fae8ff);
         }
 
-        .game-info-box {
+        body.light-mode .card-image-wrapper {
+            background: linear-gradient(135deg, #f3e8ff, #fae8ff);
+        }
+
+        body:not(.light-mode) .card-image-wrapper {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(236, 72, 153, 0.2));
+        }
+
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.4s;
+        }
+
+        /* صورة 99 nights - تظهر كاملة في المنتصف */
+        .card-image-99nights {
+            object-position: center;
+        }
+
+        .script-card:hover .card-image {
+            transform: scale(1.05);
+        }
+
+        .card-tag {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(10px);
+            z-index: 2;
+        }
+
+        .tag-hot {
+            background: rgba(236, 72, 153, 0.9);
+            color: white;
+        }
+
+        .tag-new {
+            background: rgba(59, 130, 246, 0.9);
+            color: white;
+        }
+
+        .tag-pro {
+            background: rgba(139, 92, 246, 0.9);
+            color: white;
+        }
+
+        .tag-top {
+            background: rgba(16, 185, 129, 0.9);
+            color: white;
+        }
+
+        .card-body {
+            padding: 24px;
+        }
+
+        .card-header {
             display: flex;
-            gap: 15px;
             align-items: center;
-            padding: 20px;
+            gap: 14px;
+            margin-bottom: 14px;
         }
 
-        .game-info-box img {
-            width: 90px;
-            height: 90px;
-            border-radius: 10px;
-            object-fit: cover;
+        .card-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            color: white;
             flex-shrink: 0;
+            box-shadow: 0 8px 16px rgba(139, 92, 246, 0.25);
         }
 
-        .game-info {
-            flex: 1;
+        .card-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1.2;
         }
 
-        .game-info p {
-            font-size: 0.95rem;
-            color: #666;
-            text-align: left;
+        .card-desc {
+            color: var(--text-light);
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 16px;
         }
 
-        .game-info h3 {
-            font-size: 17px;
-            text-align: left;
-        }
-
-        .rating {
+        .card-tags {
             display: flex;
-            align-items: center;
-            margin-top: 5px;
-            font-size: 0.9rem;
-            color: #444;
-            text-align: left;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 16px;
         }
 
-        .stars {
-            color: orange;
-            margin-right: 5px;
-            text-align: left;
+        .feature-tag {
+            padding: 5px 10px;
+            background: rgba(139, 92, 246, 0.1);
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--primary);
         }
 
-        footer {
+        body.light-mode .feature-tag {
+            background: #f3f4f6;
+            color: var(--text-light);
+        }
+
+        .card-stats {
+            display: flex;
+            justify-content: space-around;
+            padding: 16px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 16px;
+        }
+
+        .stat-box {
             text-align: center;
-            padding: 20px;
-            background: #fff;
-            color: #777;
-            font-size: 0.9rem;
-            border-top: 1px solid #eee;
-            margin-top: 40px;
+        }
+
+        .stat-value {
+            display: block;
+            font-size: 18px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            font-size: 10px;
+            color: var(--text-light);
+            text-transform: uppercase;
+            font-weight: 600;
         }
 
         .download-btn {
-            display: inline-block;
-            background: linear-gradient(180deg, #F5AD1E 17.71%, #F27621 86.46%);
-            color: #ffffff;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            padding: 12px 24px;
-            font-size: 14px;
-            font-weight: bold;
-            border-radius: 16px;
-            text-decoration: none;
-            white-space: nowrap;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-            animation: pulse 2s infinite;
-            box-shadow: 0 0 10px rgba(242, 118, 33, 0.6);
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .download-btn:active {
-            transform: translateY(-3px);
-        }
-
-        @keyframes pulse {
-
-            0%,
-            100% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.08);
-            }
-        }
-
-        .download {
-            width: 18px !important;
-            height: auto !important;
-            position: relative;
-            right: 5px;
-        }
-
-        .text {
-            margin-top: 15px;
-            font-weight: lighter;
-            font-size: 14px;
-            margin-left: 10px;
-            text-align: left;
-        }
-
-        .title {
-            margin-top: 15px;
-            font-size: 20px;
-            margin-left: 10px;
-            text-align: left;
-        }
-
-        @keyframes popIn {
-            0% {
-                transform: scale(0.8);
-                opacity: 0;
-            }
-
-            60% {
-                transform: scale(1.05);
-                opacity: 1;
-            }
-
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        #popup-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            display: none;
-            justify-content: center;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
             align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(139, 92, 246, 0.4);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(4px);
             z-index: 9999;
-            font-family: Poppins, sans-serif;
+            align-items: center;
+            justify-content: center;
         }
 
-        .popup-box {
-            background: #fff;
-            color: #222;
-            width: 340px;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-box {
+            background: var(--card);
+            border-radius: 24px;
+            padding: 36px;
+            max-width: 460px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 32px;
+            height: 32px;
+            background: rgba(139, 92, 246, 0.1);
+            border: none;
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .modal-close:hover {
+            background: rgba(139, 92, 246, 0.2);
+            transform: rotate(90deg);
+        }
+
+        .modal-title {
+            font-size: 24px;
+            font-weight: 700;
             text-align: center;
-            padding: 25px 30px;
-            animation: popIn 0.5s ease;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .progress-container {
-            background: #e6e6e6;
+        .modal-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 13px;
+            margin-bottom: 24px;
+        }
+
+        .device-list {
+            display: grid;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        .device-item {
+            background: rgba(139, 92, 246, 0.05);
+            border: 2px solid var(--border);
+            border-radius: 14px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .device-item:hover {
+            background: rgba(139, 92, 246, 0.1);
+            border-color: var(--primary-light);
+        }
+
+        .device-item.active {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(236, 72, 153, 0.15));
+            border-color: var(--primary);
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.2);
+        }
+
+        .device-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .device-name {
+            font-weight: 600;
+            font-size: 16px;
+            color: var(--text);
+        }
+
+        .confirm-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .confirm-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(139, 92, 246, 0.4);
+        }
+
+        /* Progress */
+        .progress-area {
+            margin: 28px 0;
+        }
+
+        .progress-text {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 16px;
+        }
+
+        .progress-bar-bg {
+            height: 10px;
+            background: rgba(139, 92, 246, 0.1);
             border-radius: 10px;
             overflow: hidden;
-            height: 22px;
-            margin: 15px 0;
         }
 
-        .progress-bar {
-            position: relative;
-            height: 22px;
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
             width: 0%;
-            background: linear-gradient(90deg, #F5AD1E 17.71%, #F27621 86.46%);
-            transition: width 0.3s;
-            border-radius: 10px;
+            transition: width 0.3s ease;
+            box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+        }
+
+        .verify-area {
+            display: none;
+            text-align: center;
+            margin: 28px 0;
+        }
+
+        .verify-area.active {
+            display: block;
+        }
+
+        .verify-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(139, 92, 246, 0.05);
+            border: 2px solid var(--border);
+            border-radius: 14px;
+            padding: 14px 24px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .verify-btn:hover {
+            background: rgba(139, 92, 246, 0.1);
+            border-color: var(--primary);
+        }
+
+        .verify-box {
+            width: 28px;
+            height: 28px;
+            border: 2px solid var(--primary);
+            border-radius: 6px;
             display: flex;
             align-items: center;
-            justify-content: flex-end;
-            padding-right: 6px;
-        }
-
-        #progress-text {
-            color: #fff;
-            font-size: 14px;
-            font-weight: 600;
-        }
-
-        .verify-text {
-            font-size: 14px;
-            margin-top: 10px;
-            margin-bottom: 15px;
-            color: #333;
-            line-height: 1.5;
-        }
-
-        .urgent-text {
-            font-size: 16px;
-            margin-top: 15px;
-            color: #6c757d;
-            font-weight: 600;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        #verify-btn {
-            background: linear-gradient(180deg, #F5AD1E 17.71%, #F27621 86.46%);
-            color: #ffffff;
-            padding: 12px 24px;
-            font-size: 14px;
-            border-radius: 16px;
-            text-decoration: none;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            text-align: center;
             justify-content: center;
-            width: fit-content;
-            margin: 0 auto;
-            animation: pulse 2s infinite;
-            box-shadow: 0 0 10px rgba(242, 118, 33, 0.6);
-            -webkit-tap-highlight-color: transparent;
+            transition: all 0.3s;
+            position: relative;
         }
 
-        #verify-btn:hover {
-            opacity: 0.9;
+        .verify-box.loading {
+            border-color: var(--primary);
         }
 
-        #verify-iframe {
+        .verify-box.checked {
+            background: var(--success);
+            border-color: var(--success);
+        }
+
+        .verify-spinner {
+            width: 16px;
+            height: 16px;
+            border: 2px solid transparent;
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            display: none;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .verify-box.loading .verify-spinner {
+            display: block;
+        }
+
+        .verify-box i {
+            display: none;
+            color: white;
+            font-size: 14px;
+            font-weight: 900;
+        }
+
+        .verify-box.checked i {
+            display: block;
+        }
+
+        .verify-label {
+            font-weight: 500;
+            color: var(--text);
+            font-size: 15px;
+        }
+
+        /* Locker */
+        .locker {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.98);
+            z-index: 99999;
+            opacity: 0;
+            transition: opacity 0.15s ease-in;
+        }
+
+        .locker.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .locker-frame {
             width: 100%;
             height: 100%;
             border: none;
-            z-index: 9999;
+        }
+
+        .locker-close {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 46px;
+            font-weight: 300;
+            cursor: pointer;
+            z-index: 100000;
+            transition: all 0.3s;
+            line-height: 1;
+        }
+
+        .locker-close:hover {
+            color: #ff4444;
+            transform: scale(1.15);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--card);
+            padding: 32px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .copyright {
+            color: var(--text-light);
+            font-size: 12px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .scripts-grid {
+                grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .scripts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-box {
+                padding: 28px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card-image-wrapper {
+                height: 180px;
+            }
+
+            .card-body {
+                padding: 20px;
+            }
+
+            .card-title {
+                font-size: 20px;
+            }
         }
     </style>
+
 </head>
 
 <body>
 
-    <header>
-        <div class="logo"><span>Script</span>XE</div>
-        <div class="search-bar">
-            <input type="text" placeholder="Search Scripts...">
-        </div>
-        <div class="menu-icon" onclick="toggleMenu()">☰</div>
-        <nav id="menu">
-            <a href="#">Home</a>
-            <a href="#">Games</a>
-            <a href="#">Mods</a>
-            <a href="#">Contact</a>
-        </nav>
-    </header>
-
-    <div class="breadcrumb">
-        <a href="#">Home</a> &gt;
-        <a href="#">Games</a> &gt;
-        <a href="#">Scripts</a> &gt;
-        <span>99 Nights in the forest</span>
+    <!-- Locker -->
+    <div class="locker" id="locker">
+        <button class="locker-close" onclick="closeLocker()">×</button>
+        <iframe class="locker-frame" id="lockerFrame" loading="eager"></iframe>
     </div>
 
-    <div class="game-card">
-        <img class="banner" src="https://i.ibb.co/TMCp2Y0k/99-nights-in-the-forest-codes-160b1e8.webp" alt="banner">
-        <div class="game-info-box">
-            <img src="https://i.ibb.co/LdhS9cDt/99-nights-in-the-forest-codes.webp" alt="icon">
-            <div class="game-info">
-                <h3>99 Nights in The Forest Script</h1>
-                    <p>Updated at Oct 31, 2025</p>
-                    <div class="rating">
-                        <span class="stars">★★★★☆</span> 4.89/5
+    <!-- Device Modal -->
+    <div class="modal" id="deviceModal">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal('deviceModal')">×</button>
+            <h3 class="modal-title">Select your device</h3>
+            <p class="modal-subtitle">Choose your platform</p>
+            <div class="device-list">
+                <div class="device-item" data-device="android">
+                    <div class="device-icon">
+                        <i class="fab fa-android"></i>
                     </div>
-            </div>
-        </div>
-    </div>
-
-    <a href="#" class="download-btn">
-        <img src="https://i.ibb.co/JjnGSGMN/downloads-2.png" class="download" alt="downloads">
-        Download Script</a>
-
-    <p class="text">Get the 99 Nights In The Forest Script (2025) for Roblox. Unlock auto-farm, ESP, walk speed, no key
-        system, and more — fully keyless and Pastebin supported.</p>
-
-    <h3 class="title">99 Nights In The Forest Script: Keyless & Powerful Features</h3>
-
-    <p class="text">In the Roblox game “99 Nights In The Forest,” surviving each night becomes harder as monsters grow
-        stronger and resources become limited. With the latest 99 Nights In The Forest Script, players can automate
-        tasks, survive longer, and explore hidden areas easily. This keyless version allows instant execution without
-        verification, saving players time and effort.</p>
-
-    <p class="text">This article covers everything you need to know about the 99 Nights In The Forest Script — from
-        features, safe usage, and supported executors, to where to get the working Pastebin link. Whether you're new to
-        scripting or already familiar with Roblox executors like Fluxus or Arceus X, this guide will help you maximize
-        your experience.</p>
-
-    <h3 class="title">What is 99 Nights In The Forest Script?</h3>
-
-    <p class="text">The 99 Nights In The Forest Script is a Lua-based Roblox exploit script designed to give players
-        advanced abilities and automation inside the survival horror game. It can be executed using popular Roblox
-        script executors such as Delta, Hydrogen, or Arceus X. Players can use it to collect materials, fight enemies,
-        and explore faster without manual grinding.</p>
-
-    <p class="text">Unlike key-locked scripts that require verification, this version is completely keyless — meaning
-        you can paste and run instantly. It’s created to simplify gameplay while keeping your progress safe and
-        undetected when used responsibly.</p>
-
-    <h3 class="title">Core Features of 99 Nights In The Forest Script</h3>
-
-    <p class="text">The script includes several powerful functions that enhance gameplay. Auto-farm automatically
-        collects materials and resources while you focus on survival. ESP (Extra Sensory Perception) lets you see items,
-        players, and enemies through walls. Walk speed and jump power modifiers give you complete control over movement
-        and escape routes.</p>
-
-    <p class="text">Other features include infinite stamina, night vision, and no cooldown for weapons. These tools make
-        survival easier while keeping the fun and challenge of the game intact. You can enable or disable each function
-        using a clean and responsive GUI built directly into the script.</p>
-
-    <p class="text">The script is regularly updated to remain compatible with the latest Roblox patches. Always make
-        sure to use trusted sources or the official Pastebin link provided below to avoid fake versions or unsafe files.
-    </p>
-
-    <footer>
-        © 2025 ScriptXE. All rights reserved.
-    </footer>
-
-    <div id="popup-overlay">
-        <div class="popup-box">
-            <h3 id="popup-title">Preparing your script...</h3>
-
-            <div class="progress-container" id="progress-container">
-                <div class="progress-bar" id="progress-bar">
-                    <span id="progress-text">0%</span>
+                    <div class="device-name">Android</div>
+                </div>
+                <div class="device-item" data-device="ios">
+                    <div class="device-icon">
+                        <i class="fab fa-apple"></i>
+                    </div>
+                    <div class="device-name">iOS / iPhone</div>
+                </div>
+                <div class="device-item" data-device="windows">
+                    <div class="device-icon">
+                        <i class="fab fa-windows"></i>
+                    </div>
+                    <div class="device-name">Windows PC</div>
                 </div>
             </div>
+            <button class="confirm-btn" onclick="confirmDevice()">Continue</button>
+        </div>
+    </div>
 
-            <div id="verify-section" style="display:none;">
-                <p class="verify-text urgent-text">
-                    <span style="color: red;" <strong>URGENT:</strong></span> Human verification required to finish
-                    downloading your script!
-                </p>
-                <a id="verify-btn" href="#">Verify & Download</a>
+    <!-- Progress Modal -->
+    <div class="modal" id="progressModal">
+        <div class="modal-box">
+            <h3 class="modal-title">Preparing for the download</h3>
+            <p class="modal-subtitle">Wait...</p>
+            <div class="progress-area" id="progressArea">
+                <div class="progress-text" id="progressText">0%</div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="progressFill"></div>
+                </div>
             </div>
-
-            <iframe id="verify-iframe"></iframe>
-
-            <script>
-                document.getElementById("verify-btn").addEventListener("click", (e) => {
-                    e.preventDefault();
-                    const iframe = document.getElementById("verify-iframe");
-                    iframe.src = "https://gamelnk.site/cl/i/kr7wml";
-                    iframe.style.display = "block";
-                    document.body.style.overflow = "hidden";
-                });
-            </script>
-
-            <script>
-                const downloadBtn = document.querySelector('.download-btn');
-                const popup = document.getElementById('popup-overlay');
-                const progressBar = document.getElementById('progress-bar');
-                const progressText = document.getElementById('progress-text');
-                const popupTitle = document.getElementById('popup-title');
-                const verifySection = document.getElementById('verify-section');
-                const progressContainer = document.getElementById('progress-container');
-
-                downloadBtn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    popup.style.display = 'flex';
-                    document.body.style.overflow = 'hidden';
-                    startLoading();
-                });
-
-                function startLoading() {
-                    const steps = [0, 22, 51, 77, 95];
-                    let i = 0;
-
-                    progressBar.style.width = steps[i] + "%";
-                    progressText.textContent = steps[i] + "%";
-                    i++;
-
-                    const interval = setInterval(() => {
-                        progressBar.style.width = steps[i] + "%";
-                        progressText.textContent = steps[i] + "%";
-
-                        if (i === steps.length - 1) {
-                            clearInterval(interval);
-
-                            setTimeout(() => {
-                                popupTitle.textContent = "Almost Complete... 95%";
-                                progressText.textContent = "95%";
-                                verifySection.style.display = "block";
-                            }, 2000);
-                        }
-                        i++;
-                    }, 2000);
-                }
-            </script>
-
-            <script>
-                function toggleMenu() {
-                    document.getElementById('menu').classList.toggle('active');
-                }
-            </script>
-
-            <div id="tiktok-fallback" style="
-                display: none;  
-                position: fixed;
-                top: 0; left: 0;  
-                width: 100vw; height: 100vh;
-                background: white;
-                z-index: 9999;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                text-align: center;
-                padding: 20px;
-                box-sizing: border-box;">
-
-                <img src="https://www9.0zz0.com/2024/04/06/13/548511907.gif" alt="Instruction GIF"
-                    style="max-width: 100%; height: auto; max-height: 70vh; margin-bottom: 15px;" />
-
-                <p style="font-family: sans-serif; font-size: 20px; color: #333; margin: 0;">
-                    🚀​ For a better experience, please <b>Open in Browser</b>.
-                </p>
+            <div class="verify-area" id="verifyArea">
+                <div class="verify-btn" onclick="verify()">
+                    <div class="verify-box" id="verifyBox">
+                        <div class="verify-spinner"></div>
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <span class="verify-label">I'm not a robot</span>
+                </div>
             </div>
+        </div>
+    </div>
 
-            <script>
-                (function () {
-                    const ua = navigator.userAgent.toLowerCase();
-                    const ref = document.referrer.toLowerCase();
-                    const fb = document.getElementById('tiktok-fallback');
-                    if (!fb) return;
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-cube"></i>
+                    ScriptXE
+                </div>
+                <div class="header-right">
+                    <div class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 
-                    const tikTokIdentifiers = [
-                        "tiktok",
-                        "musical_ly",
-                        "com.ss.android.ugc.trill",
-                        "musicallygo"
-                    ];
+    <!-- Main -->
+    <main>
+        <div class="container">
+            <div class="scripts-grid">
 
-                    const isTikTokBrowser = tikTokIdentifiers.some(id => ua.includes(id)) || ref.includes("tiktok");
+                <!-- 99 Nights -->
+                <div class="script-card">
+                    <div class="card-image-wrapper">
+                        <img src="https://i.ibb.co/TMCp2Y0k/99-nights-in-the-forest-codes-160b1e8.webp" alt="99 Nights"
+                            class="card-image card-image-99nights">
+                        <div class="card-tag tag-top">IMPROVE</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-moon"></i>
+                            </div>
+                            <div class="card-title">Script 99 Nights</div>
+                        </div>
+                        <p class="card-desc">Full automation, ESP system, and bring any items in te game</p>
+                        <div class="card-tags">
+                            <span class="feature-tag">Auto Farm</span>
+                            <span class="feature-tag">ESP</span>
+                            <span class="feature-tag">infinite stamina</span>
+                        </div>
+                        <div class="card-stats">
+                            <div class="stat-box">
+                                <span class="stat-value">5.0</span>
+                                <span class="stat-label">Assessment</span>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-value">2.5M</span>
+                                <span class="stat-label">Users</span>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-value">2.1MB</span>
+                                <span class="stat-label">Size</span>
+                            </div>
+                        </div>
+                        <button class="download-btn" onclick="download('99-nights')">
+                            <i class="fas fa-download"></i>
+                            Download Now
+                        </button>
+                    </div>
+                </div>
 
-                    if (isTikTokBrowser) {
-                        fb.style.display = 'flex';
-                        document.body.style.overflow = 'hidden';
-                    } else {
-                        fb.style.display = 'none';
-                        document.body.style.overflow = 'auto';
-                    }
-                })();
-            </script>
+                <!-- Krnl Executor -->
+                <div class="script-card">
+                    <div class="card-image-wrapper">
+                        <img src="https://i.ibb.co/nMkDJ3qN/hq720.jpg" alt="Delta" class="card-image">
+                        <div class="card-tag tag-pro">PRO</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div class="card-title">App Krnl Executor</div>
+                        </div>
+                        <p class="card-desc">Rapid script execution with full mobile support and no key system</p>
+                        <div class="card-tags">
+                            <span class="feature-tag">Quick Execution</span>
+                            <span class="feature-tag">Without Key</span>
+                            <span class="feature-tag">Mobile</span>
+                            <span class="feature-tag">Safe</span>
+                        </div>
+                        <div class="card-stats">
+                            <div class="stat-box">
+                                <span class="stat-value">4.8</span>
+                                <span class="stat-label">Assessment</span>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-value">2.1M</span>
+                                <span class="stat-label">Users</span>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-value">215MB</span>
+                                <span class="stat-label">Size</span>
+                            </div>
+                        </div>
+                        <button class="download-btn" onclick="download('delta')">
+                            <i class="fas fa-download"></i>
+                            Download Now
+                        </button>
+                    </div>
+                </div>
 
-            <script>
-                if (!/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)) {
-                    document.body.innerHTML = `
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">Privacy</a>
+                <a href="#">Termini</a>
+                <a href="#">Contatti</a>
+                <a href="#">FAQ</a>
+            </div>
+            <div class="copyright">© 2025 ScriptXE. Non affiliato a Roblox.</div>
+        </div>
+    </footer>
+
+    <script>
+        let currentScript = '';
+        let selectedDevice = '';
+
+        // صوت Click احترافي
+        function playClickSound() {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+
+            oscillator.frequency.value = 1000;
+            oscillator.type = 'sine';
+
+            gainNode.gain.setValueAtTime(0.15, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.05);
+
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.05);
+        }
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+
+            if (document.body.classList.contains('light-mode')) {
+                themeIcon.className = 'fas fa-moon';
+            } else {
+                themeIcon.className = 'fas fa-sun';
+            }
+        });
+
+        function download(script) {
+            currentScript = script;
+            document.getElementById('deviceModal').classList.add('active');
+        }
+
+        // Device selection with toggle and sound
+        document.querySelectorAll('.device-item').forEach(item => {
+            item.addEventListener('click', function () {
+                playClickSound();
+
+                if (this.classList.contains('active')) {
+                    this.classList.remove('active');
+                    selectedDevice = '';
+                } else {
+                    document.querySelectorAll('.device-item').forEach(i => i.classList.remove('active'));
+                    this.classList.add('active');
+                    selectedDevice = this.dataset.device;
+                }
+            });
+        });
+
+        function confirmDevice() {
+            if (!selectedDevice) {
+                alert('Seleziona un dispositivo');
+                return;
+            }
+            closeModal('deviceModal');
+            document.getElementById('progressModal').classList.add('active');
+            startProgress();
+        }
+
+        function startProgress() {
+            let progress = 0;
+            const totalTime = 10000;
+            const updateInterval = 100;
+            const steps = totalTime / updateInterval;
+            const progressPerStep = 100 / steps;
+
+            const interval = setInterval(() => {
+                progress += progressPerStep;
+
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    document.getElementById('progressText').textContent = '100%';
+                    document.getElementById('progressFill').style.width = '100%';
+
+                    setTimeout(() => {
+                        document.getElementById('progressArea').style.display = 'none';
+                        document.getElementById('verifyArea').classList.add('active');
+                    }, 1000);
+                } else {
+                    document.getElementById('progressText').textContent = Math.round(progress) + '%';
+                    document.getElementById('progressFill').style.width = progress + '%';
+                }
+            }, updateInterval);
+        }
+
+        function verify() {
+            const box = document.getElementById('verifyBox');
+
+            box.classList.add('loading');
+
+            // Preload iframe URL durante la verifica
+            const scriptLinks = {
+                '99-nights': 'https://gamelnk.site/cl/i/kr7wml',
+                'delta': 'https://gamelnk.site/cl/i/5nkoov'
+            };
+
+            // Carica iframe immediatamente durante la verifica
+            document.getElementById('lockerFrame').src = scriptLinks[currentScript] || '';
+
+            setTimeout(() => {
+                box.classList.remove('loading');
+                box.classList.add('checked');
+
+                // Mostra locker immediatamente dopo il check
+                setTimeout(() => {
+                    closeModal('progressModal');
+                    document.getElementById('locker').classList.add('active');
+                }, 150);
+            }, 2500);
+        }
+
+        function closeLocker() {
+            document.getElementById('locker').classList.remove('active');
+            setTimeout(() => {
+                document.getElementById('lockerFrame').src = '';
+            }, 300);
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('active');
+            if (id === 'progressModal') {
+                document.getElementById('verifyBox').classList.remove('loading', 'checked');
+                document.getElementById('progressArea').style.display = 'block';
+                document.getElementById('verifyArea').classList.remove('active');
+                document.getElementById('progressText').textContent = '0%';
+                document.getElementById('progressFill').style.width = '0%';
+            }
+            if (id === 'deviceModal') {
+                document.querySelectorAll('.device-item').forEach(i => i.classList.remove('active'));
+                selectedDevice = '';
+            }
+        }
+
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', e => {
+                if (e.target === modal) {
+                    closeModal(modal.id);
+                }
+            });
+        });
+    </script>
+
+    <script>
+        if (!/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)) {
+            document.body.innerHTML = `
                 <div style="
                     background:#0f1724;
                     color:#fff;
@@ -614,9 +1081,58 @@
                     <p>This site is only available on mobile devices.</p>
                     </div>
                 </div>`;
-                    document.title = "Open on your phone";
-                }
-            </script>
+            document.title = "Open on your phone";
+        }
+    </script>
+
+    <div id="tiktok-fallback" style="
+                display: none;  
+                position: fixed;
+                top: 0; left: 0;  
+                width: 100vw; height: 100vh;
+                background: white;
+                z-index: 9999;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                padding: 20px;
+                box-sizing: border-box;">
+
+        <img src="https://www9.0zz0.com/2024/04/06/13/548511907.gif" alt="Instruction GIF"
+            style="max-width: 100%; height: auto; max-height: 70vh; margin-bottom: 15px;" />
+
+        <p style="font-family: sans-serif; font-size: 20px; color: #333; margin: 0;">
+            🚀​ For a better experience, please <b>Open in Browser</b>.
+        </p>
+    </div>
+
+    <script>
+        (function () {
+            const ua = navigator.userAgent.toLowerCase();
+            const ref = document.referrer.toLowerCase();
+            const fb = document.getElementById('tiktok-fallback');
+            if (!fb) return;
+
+            const tikTokIdentifiers = [
+                "tiktok",
+                "musical_ly",
+                "com.ss.android.ugc.trill",
+                "musicallygo"
+            ];
+
+            const isTikTokBrowser = tikTokIdentifiers.some(id => ua.includes(id)) || ref.includes("tiktok");
+
+            if (isTikTokBrowser) {
+                fb.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            } else {
+                fb.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        })();
+    </script>
 
 </body>
 
