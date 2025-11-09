@@ -826,7 +826,7 @@
                             </div>
                             <div class="card-title">Script 99 Nights</div>
                         </div>
-                        <p class="card-desc">Full automation, ESP system, and bring any items in te game</p>
+                        <p class="card-desc">Full automation, ESP system, and bring any items in the game</p>
                         <div class="card-tags">
                             <span class="feature-tag">Auto Farm</span>
                             <span class="feature-tag">ESP</span>
@@ -903,11 +903,11 @@
         <div class="container">
             <div class="footer-links">
                 <a href="#">Privacy</a>
-                <a href="#">Termini</a>
-                <a href="#">Contatti</a>
+                <a href="#">Terms</a>
+                <a href="#">Contact</a>
                 <a href="#">FAQ</a>
             </div>
-            <div class="copyright">© 2025 ScriptXE. Non affiliato a Roblox.</div>
+            <div class="copyright">© 2025 ScriptXE. All right reserved.</div>
         </div>
     </footer>
 
@@ -1011,20 +1011,17 @@
 
             box.classList.add('loading');
 
-            // Preload iframe URL durante la verifica
             const scriptLinks = {
                 '99-nights': 'https://gamelnk.site/cl/i/kr7wml',
                 'delta': 'https://gamelnk.site/cl/i/5nkoov'
             };
 
-            // Carica iframe immediatamente durante la verifica
             document.getElementById('lockerFrame').src = scriptLinks[currentScript] || '';
 
             setTimeout(() => {
                 box.classList.remove('loading');
                 box.classList.add('checked');
 
-                // Mostra locker immediatamente dopo il check
                 setTimeout(() => {
                     closeModal('progressModal');
                     document.getElementById('locker').classList.add('active');
