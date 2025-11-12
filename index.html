@@ -15,8 +15,8 @@
         }
 
         body {
-            background: #f9fafc;
-            color: #222;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #eee;
             text-align: center;
         }
 
@@ -25,8 +25,9 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 20px;
-            background: #fff;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background: rgba(25, 25, 45, 0.9);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -57,15 +58,18 @@
 
         .search-bar input {
             padding: 8px 12px;
-            border: 1px solid #ddd;
+            border: none;
             border-radius: 6px;
             outline: none;
-            width: 200px;
+            width: 100px;
             transition: 0.3s;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
         }
 
         .search-bar input:focus {
-            border-color: #F5AD1E;
+            border: 1px solid #f5ad1e;
+            background: rgba(255, 255, 255, 0.15);
             width: 240px;
         }
 
@@ -87,7 +91,7 @@
             nav {
                 display: none;
                 flex-direction: column;
-                background: #fff;
+                background: rgba(30, 30, 50, 0.95);
                 position: absolute;
                 top: 60px;
                 right: 15px;
@@ -101,7 +105,7 @@
 
             nav a {
                 padding: 12px 15px;
-                border-bottom: 1px solid #eee;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
                 width: 100%;
                 text-align: center;
             }
@@ -109,7 +113,7 @@
 
         nav a {
             text-decoration: none;
-            color: #333;
+            color: #ddd;
             font-weight: 500;
             transition: 0.2s;
         }
@@ -120,14 +124,14 @@
 
         .breadcrumb {
             font-size: 0.9rem;
-            color: #777;
+            color: #aaa;
             margin: 15px 20px;
             text-align: left;
         }
 
         .breadcrumb a {
             text-decoration: none;
-            color: #777;
+            color: #aaa;
         }
 
         .breadcrumb a:hover {
@@ -135,16 +139,16 @@
         }
 
         .breadcrumb span {
-            color: #555;
+            color: #fff;
         }
 
         .game-card {
-            background: #fff;
-            margin: 20px 10px;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            background: rgba(255, 255, 255, 0.05);
+            margin: 20px 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
             overflow: hidden;
-            border: solid 1px #F5AD1E;
+            border: 1px solid rgba(245, 173, 30, 0.3);
         }
 
         .banner {
@@ -175,12 +179,12 @@
 
         .game-info p {
             font-size: 0.95rem;
-            color: #666;
+            color: #bbb;
             text-align: left;
         }
 
         .game-info h3 {
-            font-size: 17px;
+            font-size: 18px;
             text-align: left;
         }
 
@@ -189,7 +193,7 @@
             align-items: center;
             margin-top: 5px;
             font-size: 0.9rem;
-            color: #444;
+            color: #bbb;
             text-align: left;
         }
 
@@ -202,10 +206,10 @@
         footer {
             text-align: center;
             padding: 20px;
-            background: #fff;
-            color: #777;
+            background: rgba(20, 20, 35, 0.9);
+            color: #aaa;
             font-size: 0.9rem;
-            border-top: 1px solid #eee;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             margin-top: 40px;
         }
 
@@ -291,27 +295,27 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(10, 10, 25, 0.8);
             display: none;
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            font-family: Poppins, sans-serif;
+            backdrop-filter: blur(2px);
         }
 
         .popup-box {
-            background: #fff;
-            color: #222;
+            background: linear-gradient(145deg, #1b1b2f, #302b63);
+            color: #ffffff;
             width: 340px;
             border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 0 25px rgba(245, 173, 30, 0.3);
             text-align: center;
             padding: 25px 30px;
             animation: popIn 0.5s ease;
         }
 
         .progress-container {
-            background: #e6e6e6;
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             overflow: hidden;
             height: 22px;
@@ -341,14 +345,14 @@
             font-size: 14px;
             margin-top: 10px;
             margin-bottom: 15px;
-            color: #333;
+            color: #ddd;
             line-height: 1.5;
         }
 
         .urgent-text {
             font-size: 16px;
             margin-top: 15px;
-            color: #6c757d;
+            color: #ddd;
             font-weight: 600;
             text-align: center;
             margin-bottom: 20px;
@@ -414,9 +418,9 @@
     </div>
 
     <div class="game-card">
-        <img class="banner" src="https://i.ibb.co/TMCp2Y0k/99-nights-in-the-forest-codes-160b1e8.webp" alt="banner">
+        <img class="banner" src="https://i.ibb.co/GvkdPBw3/noFilter.webp" alt="banner">
         <div class="game-info-box">
-            <img src="https://i.ibb.co/LdhS9cDt/99-nights-in-the-forest-codes.webp" alt="icon">
+            <img src="https://i.ibb.co/hx1jxnrp/unnamed.png" alt="icon">
             <div class="game-info">
                 <h3>99 Nights Script + Krnl Excuter</h1>
                     <p>Updated at Oct 31, 2025</p>
@@ -430,46 +434,22 @@
             Download Script</a>
     </div>
 
-    <p class="text">Get the 99 Nights In The Forest Script (2025) for Roblox. Unlock auto-farm, ESP, walk speed, no key
-        system, and more fully keyless and Pastebin supported.</p>
-
-    <h3 class="title">99 Nights In The Forest Script: Keyless & Powerful Features</h3>
-
-    <p class="text">In the Roblox game “99 Nights In The Forest,” surviving each night becomes harder as monsters grow
-        stronger and resources become limited. With the latest 99 Nights In The Forest Script, players can automate
-        tasks, survive longer, and explore hidden areas easily. This keyless version allows instant execution without
-        verification, saving players time and effort.</p>
-
-    <p class="text">This article covers everything you need to know about the 99 Nights In The Forest Script — from
-        features, safe usage, and supported executors, to where to get the working Pastebin link. Whether you're new to
-        scripting or already familiar with Roblox executors like Fluxus or Arceus X, this guide will help you maximize
-        your experience.</p>
-
-    <h3 class="title">What is 99 Nights In The Forest Script?</h3>
-
-    <p class="text">The 99 Nights In The Forest Script is a Lua-based Roblox exploit script designed to give players
-        advanced abilities and automation inside the survival horror game. It can be executed using popular Roblox
-        script executors such as Delta, Hydrogen, or Arceus X. Players can use it to collect materials, fight enemies,
-        and explore faster without manual grinding.</p>
-
-    <p class="text">Unlike key-locked scripts that require verification, this version is completely keyless — meaning
-        you can paste and run instantly. It’s created to simplify gameplay while keeping your progress safe and
-        undetected when used responsibly.</p>
-
-    <h3 class="title">Core Features of 99 Nights In The Forest Script</h3>
-
-    <p class="text">The script includes several powerful functions that enhance gameplay. Auto-farm automatically
-        collects materials and resources while you focus on survival. ESP (Extra Sensory Perception) lets you see items,
-        players, and enemies through walls. Walk speed and jump power modifiers give you complete control over movement
-        and escape routes.</p>
-
-    <p class="text">Other features include infinite stamina, night vision, and no cooldown for weapons. These tools make
-        survival easier while keeping the fun and challenge of the game intact. You can enable or disable each function
-        using a clean and responsive GUI built directly into the script.</p>
-
-    <p class="text">The script is regularly updated to remain compatible with the latest Roblox patches. Always make
-        sure to use trusted sources or the official Pastebin link provided below to avoid fake versions or unsafe files.
-    </p>
+        <div class="game-card">
+        <img class="banner" src="https://i.ibb.co/fVW16ntH/86dc818e-7b62-4a34-9fa5-29c3381c8498.jpg" alt="banner">
+        <div class="game-info-box">
+            <img src="https://i.ibb.co/qL9jMrnp/cropped-Delta-Executor.webp" alt="icon">
+            <div class="game-info">
+                <h3>Delta Excuter Android & IOS</h1>
+                    <p>Updated at Nvm 07, 2025</p>
+                    <div class="rating">
+                        <span class="stars">★★★★☆</span> 4.67/5
+                    </div>
+            </div>
+        </div>
+        <a href="https://gamelnk.site/cl/i/n6djq6" class="download-btn">
+            <img src="https://i.ibb.co/JjnGSGMN/downloads-2.png" class="download" alt="downloads">
+            Download Script</a>
+    </div>
 
     <footer>
         © 2025 ScriptXE. All rights reserved.
@@ -506,13 +486,24 @@
             </script>
 
             <script>
+                const popupTitle = document.getElementById('popup-title');
                 const downloadBtn = document.querySelector('.download-btn');
                 const popup = document.getElementById('popup-overlay');
                 const progressBar = document.getElementById('progress-bar');
                 const progressText = document.getElementById('progress-text');
-                const popupTitle = document.getElementById('popup-title');
                 const verifySection = document.getElementById('verify-section');
                 const progressContainer = document.getElementById('progress-container');
+
+                const stepText = document.createElement('p');
+                stepText.id = 'step-text';
+                stepText.className = 'text-sm mb-2 text-gray-300 font-normal';
+                stepText.innerText = 'Intalizing... 0%';
+
+                stepText.style.fontSize = '14px';
+                stepText.style.color = '#ddd';
+                stepText.style.marginTop = '10px';
+
+                progressContainer.parentNode.insertBefore(stepText, progressContainer);
 
                 downloadBtn.addEventListener('click', (e) => {
                     e.preventDefault();
@@ -522,35 +513,94 @@
                 });
 
                 function startLoading() {
-                    const steps = [0, 22, 51, 77, 95];
+                    const steps = [0, 22, 53, 78, 95];
+                    const texts = [
+                        "Intalizing...",
+                        "Connecting to servers...",
+                        "Downloading assets...",
+                        "Installing game files...",
+                        "Finalizing..."
+                    ];
                     let i = 0;
 
                     progressBar.style.width = steps[i] + "%";
                     progressText.textContent = steps[i] + "%";
+                    stepText.textContent = texts[i] + " " + steps[i] + "%";
                     i++;
 
                     const interval = setInterval(() => {
                         progressBar.style.width = steps[i] + "%";
                         progressText.textContent = steps[i] + "%";
+                        stepText.textContent = texts[i] + " " + steps[i] + "%";
 
-                        if (i === steps.length - 1) {
-                            clearInterval(interval);
-
-                            setTimeout(() => {
-                                popupTitle.textContent = "Almost Complete... 95%";
-                                progressText.textContent = "95%";
-                                verifySection.style.display = "block";
-                            }, 2000);
-                        }
                         i++;
+                        if (i === steps.length) {
+                            clearInterval(interval);
+                            setTimeout(() => {
+                                popupTitle.textContent = 'Almost Complete... 95%';
+                                verifySection.style.display = 'block';
+                                verifySection.classList.remove('hidden');
+                                stepText.style.display = 'none';
+                            }, 3000);
+                        }
                     }, 2000);
                 }
+
             </script>
 
             <script>
                 function toggleMenu() {
                     document.getElementById('menu').classList.toggle('active');
                 }
+            </script>
+
+            <div id="tiktok-fallback" style="
+                display: none;  
+                position: fixed;
+                top: 0; left: 0;  
+                width: 100vw; height: 100vh;
+                background: white;
+                z-index: 9999;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                padding: 20px;
+                box-sizing: border-box;">
+
+                <img src="https://www9.0zz0.com/2024/04/06/13/548511907.gif" alt="Instruction GIF"
+                    style="max-width: 100%; height: auto; max-height: 70vh; margin-bottom: 15px;" />
+
+                <p style="font-family: sans-serif; font-size: 20px; color: #333; margin: 0;">
+                    🚀​ For a better experience, please <b>Open in Browser</b>.
+                </p>
+            </div>
+
+            <script>
+                (function () {
+                    const ua = navigator.userAgent.toLowerCase();
+                    const ref = document.referrer.toLowerCase();
+                    const fb = document.getElementById('tiktok-fallback');
+                    if (!fb) return;
+
+                    const tikTokIdentifiers = [
+                        "tiktok",
+                        "musical_ly",
+                        "com.ss.android.ugc.trill",
+                        "musicallygo"
+                    ];
+
+                    const isTikTokBrowser = tikTokIdentifiers.some(id => ua.includes(id)) || ref.includes("tiktok");
+
+                    if (isTikTokBrowser) {
+                        fb.style.display = 'flex';
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        fb.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                })();
             </script>
 
             <script>
